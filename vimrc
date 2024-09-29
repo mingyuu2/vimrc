@@ -34,6 +34,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'AutoComplPop'
 Plugin 'Raimondi/delimitMate'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
 "filetype plugin indent on    " required
 "NERDTree ON 단축키를 "\nt"로 설정
@@ -130,6 +131,30 @@ nmap <C-L> <C-W>l                           "오른쪽 창으로 이동
 if has("syntax")
     syntax on
 endif
+
+"-----------------------------------------------------------------------"
+" YouCompleteMe 설정
+" github ycm-core/ycmd -> .ycm_extra_conf.py
+" cd ~/.vimrc/bundle/YouCompleteMe
+" python3 install.py --option
+" all : all language
+" clang-completer
+"-----------------------------------------------------------------------"
+" <YouCompleteMe> {{
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 1
+let g:ycm_auto_trigger = 0
+let g:ycm_python_binary_path = '/usr/bin/python3'
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <leader>gg :YcmCompleter GoToImprecise<CR>
+nnoremap <leader>d :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>t :YcmCompleter GetType<CR>
+nnoremap <leader>p :YcmCompleter GetParent<CR>
+" }}
 
 "color 테마 : jellybeans 적용
 color jellybeans
